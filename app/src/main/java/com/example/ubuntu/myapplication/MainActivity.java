@@ -59,23 +59,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public View getView(int i, View convertView, ViewGroup viewGroup) {
-            View view;
-            convertView = getLayoutInflater().inflate(R.layout.customlayout, null);
-            ImageView imageView = (ImageView)convertView.findViewById(R.id.imageView);
-            TextView textView_name = (TextView)convertView.findViewById(R.id.textView_name);
-            TextView textView_description = (TextView)convertView.findViewById(R.id.textView_description);
+        public View getView(int i, View view, ViewGroup viewGroup) {
+
+            if (view == null){
+
+                view = View.inflate(getApplicationContext(), R.layout.customlayout, null);
+            }
+
+            ImageView imageView = (ImageView)view.findViewById(R.id.imageView);
+            TextView textView_name = (TextView)view.findViewById(R.id.textView_name);
+            TextView textView_description = (TextView)view.findViewById(R.id.textView_description);
 
             imageView.setImageResource(IMAGES[i]);
             textView_name.setText(NAMES[i]);
             textView_description.setText(DECRIPTIONS[i]);
 
-            if (convertView == null){
-                view = View.inflate(getApplicationContext(), R.layout.customlayout, null);
-            } else
-                {
-                view = convertView;
-            }
+
             return view;
         }
         
